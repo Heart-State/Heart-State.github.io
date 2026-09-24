@@ -1,92 +1,37 @@
-<!DOCTYPE html>
-<html lang="zh">
-
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="/assets/favicon.a450e05a.jpg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Heart Search</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MPANEL TECH LIMITED develops dependable programmable control panels and workflow tools for creators, teams and everyday productivity.">
+  <title>MPANEL | Programmable Control Panels</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080b10'/%3E%3Cpath d='M15 43V21h7l10 13 10-13h7v22h-7V31L32 44 22 31v12z' fill='%233ca6ff'/%3E%3C/svg%3E">
   <style>
-    .loader-center {
-      position: fixed;
-      top: calc(50% - 20px);
-      left: calc(50% - 20px);
-      opacity: 0.8;
-    }
-
-    @keyframes loader {
-      0% {
-        left: -100px
-      }
-
-      100% {
-        left: 110%;
-      }
-    }
-
-    #box {
-      width: 50px;
-      height: 50px;
-      background: #9b8cff;
-      animation: animate .5s linear infinite;
-      position: absolute;
-      top: 0;
-      left: 0;
-      border-radius: 3px;
-    }
-
-    @keyframes animate {
-      17% {
-        border-bottom-right-radius: 3px;
-      }
-
-      25% {
-        transform: translateY(9px) rotate(22.5deg);
-      }
-
-      50% {
-        transform: translateY(18px) scale(1, .9) rotate(45deg);
-        border-bottom-right-radius: 40px;
-      }
-
-      75% {
-        transform: translateY(9px) rotate(67.5deg);
-      }
-
-      100% {
-        transform: translateY(0) rotate(90deg);
-      }
-    }
-
-    #shadow {
-      width: 50px;
-      height: 5px;
-      background: #000;
-      opacity: 0.1;
-      position: absolute;
-      top: 59px;
-      left: 0;
-      border-radius: 50%;
-      animation: shadow .5s linear infinite;
-    }
-
-    @keyframes shadow {
-      50% {
-        transform: scale(1.2, 1);
-      }
-    }
+    :root{--ink:#f5f8fc;--muted:#9eabba;--blue:#42a5ff;--blue2:#77c3ff;--panel:#111722;--line:#263242;--bg:#080b10;--max:1160px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}a{color:inherit;text-decoration:none}button,a{touch-action:manipulation}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+    header{position:fixed;z-index:20;inset:0 0 auto;background:rgba(8,11,16,.82);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px)}nav{height:72px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;gap:12px;align-items:center;font-weight:800;letter-spacing:.14em}.mark{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:linear-gradient(145deg,#0f2136,#173e63);color:var(--blue);font-size:18px}.links{display:flex;align-items:center;gap:28px;color:#c1cad6;font-size:.92rem}.links a:hover{color:#fff}.nav-cta{padding:9px 16px;border:1px solid #3c85bd;border-radius:8px;color:#d8edff!important}
+    .hero{min-height:780px;display:flex;align-items:center;padding:130px 0 80px;background:linear-gradient(90deg,rgba(8,11,16,.18),rgba(8,11,16,.02)),url('assets/mpanel-hero.png') center/cover no-repeat}.hero-copy{width:min(570px,100%);position:relative;z-index:2}.eyebrow{margin:0 0 20px;color:var(--blue2);text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:700}.hero h1{margin:0;font-size:clamp(3.1rem,7vw,6rem);line-height:.95;letter-spacing:-.06em}.hero h1 span{color:var(--blue)}.lead{max-width:560px;margin:26px 0 34px;color:#bac5d2;font-size:1.14rem}.actions{display:flex;gap:14px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:9px;font-weight:700}.primary{background:var(--blue);color:#06101a}.secondary{border:1px solid #526070;color:#ecf5ff;background:rgba(8,11,16,.35)}
+    section{padding:100px 0}.section-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:48px}.section-head h2{margin:0;font-size:clamp(2.2rem,4vw,3.6rem);line-height:1.05;letter-spacing:-.04em}.section-head p{margin:0;color:var(--muted);max-width:600px}.products{background:#0c1119}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{min-height:300px;padding:30px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(160deg,#151d29,#0c1118);display:flex;flex-direction:column}.icon{width:52px;height:52px;display:grid;place-items:center;border:1px solid #2f6995;border-radius:14px;color:var(--blue);font-size:1.4rem}.card h3{margin:58px 0 12px;font-size:1.35rem}.card p{margin:0;color:var(--muted)}
+    .feature-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}.feature-panel{border:1px solid var(--line);border-radius:22px;padding:34px;background:radial-gradient(circle at 80% 10%,rgba(66,165,255,.18),transparent 35%),#0e141d}.feature-panel h2{font-size:clamp(2.2rem,4vw,3.5rem);line-height:1.05;letter-spacing:-.04em;margin:0 0 22px}.feature-panel>p{color:var(--muted);margin:0}.checks{display:grid;gap:20px}.check{padding:22px 0;border-bottom:1px solid var(--line)}.check:last-child{border:0}.check b{display:block;margin-bottom:5px}.check span{color:var(--muted)}
+    .about{background:linear-gradient(180deg,#0d131c,#080b10)}.facts{display:grid;grid-template-columns:1.15fr .85fr;gap:80px}.facts h2{margin:0;font-size:clamp(2.4rem,5vw,4.6rem);letter-spacing:-.05em;line-height:1.02}.facts p{color:var(--muted);margin:0 0 18px}.legal{color:#dbe7f3!important;font-weight:700}.contact{padding:80px 0}.contact-box{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:46px;border:1px solid #2b5574;border-radius:22px;background:linear-gradient(120deg,#101d2b,#0d1219)}.contact h2{margin:0 0 8px;font-size:2rem}.contact p{margin:0;color:var(--muted)}footer{border-top:1px solid var(--line);padding:30px 0;color:#7f8a98;font-size:.88rem}.foot{display:flex;justify-content:space-between;gap:20px}
+    @media(max-width:800px){.links a:not(.nav-cta){display:none}.hero{min-height:720px;background-position:60% center}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,11,16,.98) 0%,rgba(8,11,16,.8) 58%,rgba(8,11,16,.15))}.hero{position:relative}.hero-copy{width:82%}.section-head,.feature-grid,.facts{grid-template-columns:1fr;gap:32px}.cards{grid-template-columns:1fr}.card{min-height:230px}.card h3{margin-top:34px}.contact-box,.foot{align-items:flex-start;flex-direction:column}section{padding:74px 0}}
   </style>
-  <script type="module" crossorigin src="/assets/index.ce324e3c.js"></script>
-  <link rel="stylesheet" href="/assets/index.131c8142.css">
 </head>
-
 <body>
-  <div class='loader-center'>
-    <div id="shadow"></div>
-    <div id="box"></div>
-  </div>
-  <div id="app"></div>
-  
+  <header><nav class="wrap" aria-label="Main navigation"><a class="brand" href="#top"><span class="mark">M</span>MPANEL</a><div class="links"><a href="#products">Products</a><a href="#about">Company</a><a href="#contact" class="nav-cta">Contact</a></div></nav></header>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap"><div class="hero-copy"><p class="eyebrow">Built for smoother workflows</p><h1>Control more.<br><span>Do it faster.</span></h1><p class="lead">Programmable desktop control panels that put your most-used actions, apps and creative tools within easy reach.</p><div class="actions"><a class="btn primary" href="#products">Explore products</a><a class="btn secondary" href="#about">About MPANEL</a></div></div></div>
+    </section>
+    <section class="products" id="products"><div class="wrap"><div class="section-head"><h2>Purpose-built desktop control.</h2><p>Our products are designed around practical shortcuts, clear visual feedback and dependable everyday operation—from content creation to office productivity.</p></div><div class="cards">
+      <article class="card"><div class="icon">▦</div><h3>Programmable Key Panels</h3><p>Customizable keys bring multi-step actions and everyday shortcuts together in one compact device.</p></article>
+      <article class="card"><div class="icon">◎</div><h3>Knob Control Consoles</h3><p>Precise rotary input for volume, timelines, parameters and other adjustments that benefit from tactile control.</p></article>
+      <article class="card"><div class="icon">⌘</div><h3>Workflow Accessories</h3><p>Practical desktop tools and accessories designed to keep modern workspaces organized and responsive.</p></article>
+    </div></div></section>
+    <section><div class="wrap feature-grid"><div class="feature-panel"><p class="eyebrow">Simple by design</p><h2>Your workflow, one touch away.</h2><p>Assign the actions you use most, group them by task and build a control surface that fits the way you work.</p></div><div class="checks"><div class="check"><b>Flexible control</b><span>Configure shortcuts for creative, business and entertainment workflows.</span></div><div class="check"><b>Compact footprint</b><span>Useful control without taking over your desk.</span></div><div class="check"><b>Practical build</b><span>Designed for clear operation, comfortable use and dependable daily performance.</span></div></div></div></section>
+    <section class="about" id="about"><div class="wrap facts"><h2>Technology made more direct.</h2><div><p class="legal">MPANEL TECH LIMITED</p><p>MPANEL is focused on programmable control hardware and workspace accessories that help people interact with software more naturally.</p><p>We work to make complex digital routines easier to access through thoughtful hardware, straightforward controls and responsive support.</p></div></div></section>
+    <section class="contact" id="contact"><div class="wrap"><div class="contact-box"><div><h2>Business enquiries</h2><p>For product, distribution or support enquiries, contact MPANEL TECH LIMITED.</p></div><a class="btn primary" href="mailto:sales201@vsdplay.com">sales201@vsdplay.com</a></div></div></section>
+  </main>
+  <footer><div class="wrap foot"><span>© 2026 MPANEL TECH LIMITED. All rights reserved.</span><span>Programmable control products &amp; workspace accessories.</span></div></footer>
 </body>
-
 </html>
